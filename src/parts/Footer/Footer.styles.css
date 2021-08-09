@@ -1,0 +1,9 @@
+.footer {
+    padding: 1rem;
+    font-family: "Roboto Condensed", serif;
+    text-align: center;
+    font-weight: 300;
+    font-size: 0.7rem;
+    background-color: #2d3436;
+    background-image: linear-gradient(to right, #2d3436, #000000, #2d3436);
+}

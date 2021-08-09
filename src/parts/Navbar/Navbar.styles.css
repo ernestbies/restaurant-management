@@ -1,0 +1,17 @@
+.navbar {
+    height: 50px;
+    display: flex;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    border-bottom: 1px solid deepskyblue;
+    background-color: black;
+}
+
+.header-text {
+    color: deepskyblue;
+    font-family: "Roboto Condensed", serif;
+    margin-left: 5px;
+    font-size: 14px;
+}
