@@ -4,20 +4,27 @@ export const LogoContainer = styled.a`
     display: flex;
     align-items: center;
     justify-content: center;
-    position: absolute;
     text-decoration: none;
-    right: 10px;
+    margin-top: 10px;
 `;
 
-export const StyledLogo = styled.img`
-    width: ${({width}) => (width + 'px')};    
-    width: ${({height}) => (height + 'px')};
-    filter: invert(100%) hue-rotate(0deg);
+export const StyledLogo = styled.div`
+    width: 30px;
+    height: 30px;
+    border: 1px solid deepskyblue;
+    border-radius: 50%;
+    text-align: center;
+    color: deepskyblue;
+    font-family: Roboto Condensed, serif;
+    letter-spacing: 1px;
+    line-height: 30px;
+    font-size: 12px;
 `;
 
 export const StyledLink = styled.span`
     color: deepskyblue;
-    font-family: "Roboto Condensed", serif;
-    margin-left: 5px;
-    font-size: 13px;
+    font-family: Roboto Condensed, serif;
+    margin-left: 7px;
+    font-size: 11px;
+    letter-spacing: 2px;
 `;
