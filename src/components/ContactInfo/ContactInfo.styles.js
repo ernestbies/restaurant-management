@@ -10,7 +10,7 @@ export const ContactInfoContainer = styled.div`
 
 export const StyledText = styled.p`
     color: black;
-    font-family: Indie Flower, serif;
+    font-family: Roboto Condensed, serif;
     font-weight: 300;
     font-size: 12px;
 `;
