@@ -43,25 +43,3 @@ export const StyledSubheader = styled.p`
     margin-left: 10px;
     margin-right: 10px;
 `;
-
-export const StyledButton = styled.button`
-    cursor: pointer;
-    background-color: white;
-    outline: none;
-    font-family: Roboto Condensed, serif;
-    font-weight: bold;
-    font-size: 11px;
-    padding: 5px 10px 5px 10px;
-    color: black;
-    border: 0;
-    background-size: 200% 100%;
-    background-image: linear-gradient(to right, white 50%, deepskyblue 50%);
-    background-position: left bottom;
-    transition: background-position 1s;
-    
-    &:hover {
-        color: white;
-        border: black;
-        background-position: right bottom;
-    }
-`;

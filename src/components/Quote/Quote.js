@@ -10,6 +10,6 @@ export const Quote = styled.p`
     border-bottom: 2px solid deepskyblue;
     
     &:before {
-        content: "Bon apetit!";
+        content: "Bon Appétit !";
     }        
 `;

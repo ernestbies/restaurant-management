@@ -1,14 +1,13 @@
 import React from "react";
 import {LogoContainer, StyledLink, StyledLogo} from "./Logo.styles";
+import {MAIN_WEBSITE_URL} from "../../helpers/fetchData";
 
 export const Logo = () => {
 
-    const WEBSITE_URL = 'ernestbies.com'
-
     return (
-        <LogoContainer href={'localhost:3000'} title={WEBSITE_URL}>
+        <LogoContainer href={MAIN_WEBSITE_URL} title={'ernestbies.com'}>
             <StyledLogo>{'> eb'}</StyledLogo>
-            <StyledLink>{WEBSITE_URL}</StyledLink>
+            <StyledLink>{'ernestbies.com'}</StyledLink>
         </LogoContainer>
     );
 };
