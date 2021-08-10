@@ -4,6 +4,7 @@ export const StyledMenu = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-wrap: wrap;
 `;
 
 export const MenuContainer = styled.div`
@@ -11,6 +12,6 @@ export const MenuContainer = styled.div`
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    min-height: 86vh; 
-    position: relative;
+    margin-top: 30px;
+    margin-bottom: 30px;
 `;

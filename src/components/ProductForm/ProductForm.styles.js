@@ -4,17 +4,28 @@ export const ProductFormWrapper = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    flex: 1;
+    flex: 1;    
+    margin-left: 10px;
+    
+    @media screen and (orientation:portrait) {
+        order: 1;
+        margin-top: 30px;
+        margin-left: 0;
+    }
 `;
 
 export const StyledForm = styled.form`
-    max-width: 400px;
+    max-width: 480px;
     height: 530px;  
     background-color: white;  
     margin: 0 auto;
     border: 1px solid black;  
     border-radius: 10px; 
     position: relative;
+    
+    @media (max-width: 480px) {
+        scale: 0.95;
+    }
 `;
 
 export const FormHeader = styled.p`

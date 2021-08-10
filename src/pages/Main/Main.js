@@ -1,16 +1,16 @@
 import React from "react";
 import Navbar from "../../parts/Navbar/Navbar";
 import Footer from "../../parts/Footer/Footer";
-import {MainPage} from "./Main.styles";
 import Menu from "../../components/Menu/Menu";
+import SiteContent from "../../components/SiteContent/SiteContent";
 
 const Main = () => {
     return (
-        <MainPage>
+        <SiteContent>
             <Navbar/>
             <Menu/>
             <Footer/>
-        </MainPage>
+        </SiteContent>
     );
 }
 

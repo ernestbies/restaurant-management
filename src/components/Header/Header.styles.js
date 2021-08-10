@@ -5,6 +5,8 @@ export const HeaderContainer = styled.div`
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    margin-left: 10px;
+    margin-right: 10px;
 `;
 
 export const StyledLogo = styled.img`

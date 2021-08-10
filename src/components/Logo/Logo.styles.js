@@ -5,7 +5,12 @@ export const LogoContainer = styled.a`
     align-items: center;
     justify-content: center;
     text-decoration: none;
-    margin-top: 10px;
+    position: absolute;
+    bottom: 50px;
+    
+    @media screen and (orientation:portrait) {
+        scale: 0.9;
+    }
 `;
 
 export const StyledLogo = styled.div`

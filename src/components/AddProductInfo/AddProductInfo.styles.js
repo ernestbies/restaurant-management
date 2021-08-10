@@ -6,6 +6,12 @@ export const AddProductInfoContainer = styled.div`
     flex-direction: column;
     align-items: flex-start;
     flex: 1;
+    margin-left: 20px;
+    margin-right: 20px;
+    
+    @media screen and (orientation:portrait) {
+        order: 0;
+    }
 `;
 
 export const ButtonWrapper = styled.div`

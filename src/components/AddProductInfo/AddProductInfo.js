@@ -31,7 +31,9 @@ const AddProductInfo = () => {
             <Link to={'/'}>
                 <StyledButton fontSize={13}>{'BACK TO THE MAIN PAGE'}</StyledButton>
             </Link>
-            <StyledButton fontSize={13} style={{marginLeft: 50}}>{'BROWSE PRODUCTS'}</StyledButton>
+            <Link to={'/products'}>
+                <StyledButton fontSize={13} style={{marginLeft: 50}}>{'MANAGE PRODUCTS'}</StyledButton>
+            </Link>
         </ButtonWrapper>
     </AddProductInfoContainer>);
 };

@@ -5,7 +5,10 @@ export const ContactInfoContainer = styled.div`
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    margin-top: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+    text-align: center;
+    padding-top: 30px;
 `;
 
 export const StyledText = styled.p`

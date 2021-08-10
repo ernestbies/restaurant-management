@@ -5,12 +5,13 @@ import Header from "../Header/Header";
 import Subheader from "../Subheader/Subheader";
 import ContactInfo from "../ContactInfo/ContactInfo";
 import {Quote} from "../Quote/Quote";
+import {Logo} from "../Logo/Logo";
 
 const Menu = () => {
     return (
         <MenuContainer>
             <Header/>
-            <Subheader/>
+            <Subheader type={'info'}/>
             <StyledMenu>
                 <MenuOption type={'manage'}/>
                 <MenuOption type={'add'}/>
@@ -18,6 +19,7 @@ const Menu = () => {
                 <MenuOption type={'settings'}/>
             </StyledMenu>
             <ContactInfo/>
+            <Logo/>
             <Quote/>
         </MenuContainer>);
 };

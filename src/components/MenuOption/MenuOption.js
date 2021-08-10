@@ -17,7 +17,7 @@ const MenuOption = ({type}) => {
             header: '· Browse products ·',
             subheader: 'Manage the stock of products in your restaurant. Add, modify and delete products.',
             style: {width: 120, height: 120},
-            link: 'add-dish'
+            link: 'products'
         },
         add: {
             img: '/fast-food.png',
@@ -31,14 +31,14 @@ const MenuOption = ({type}) => {
             header: '· FAQ ·',
             subheader: 'How it\'s working? Check the list of questions and answers about the operation of the system.',
             style: {width: 75, height: 75, filter: 'hue-rotate(200deg)'},
-            link: 'add-dish'
+            link: 'faq'
         },
         settings: {
             img: '/settings.png',
             header: '· Settings ·',
             subheader: 'Change the server settings that provide information about the restaurant\'s products.',
             style: {width: 60, height: 60, filter: 'invert(30%)'},
-            link: 'add-dish'
+            link: 'settings'
         }
     };
 
