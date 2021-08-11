@@ -8,13 +8,48 @@ import SiteContent from "../../components/SiteContent/SiteContent";
 import {Link} from "react-router-dom";
 import {StyledButton} from "../../components/StyledButton/StyledButton";
 import {Logo} from "../../components/Logo/Logo";
+import {
+    AnswerText,
+    FaqContainer,
+    FaqRow,
+    FaqTitle,
+    StyledRow,
+    QuestionText,
+    QuestionId,
+    QuestionIdWrapper, FaqItem
+} from "./Faq.styles";
+import {faqQuestionsAnswers} from "./faqQuestionsAnswers";
+import {ColoredSpan} from "../../components/Alert/Alert.styles";
+import JsonSchema from "../../components/JsonSchema/JsonSchema";
 
 const Faq = () => {
+
+    const renderFaq = () => {
+        return faqQuestionsAnswers.map(e =>
+            <FaqItem>
+                <StyledRow key={e.id}>
+                    <QuestionIdWrapper>
+                        <QuestionId>{e.id + '. '}</QuestionId>
+                    </QuestionIdWrapper>
+                    <FaqRow>
+                        <QuestionText><ColoredSpan>{'Q: '}</ColoredSpan>{e.question}</QuestionText>
+                        <AnswerText><ColoredSpan>{'A: '}</ColoredSpan>{e.answer}</AnswerText>
+                    </FaqRow>
+                </StyledRow>
+                {e.id === 3 && <JsonSchema/>}
+            </FaqItem>
+        );
+    };
+
     return (
         <SiteContent>
             <Navbar/>
             <MenuContainer>
                 <Header/>
+                <FaqTitle>{'Frequently Asked Questions (FAQ)'}</FaqTitle>
+                <FaqContainer>
+                    {renderFaq()}
+                </FaqContainer>
                 <Link to={'/'} style={{marginTop: 50}}>
                     <StyledButton fontSize={13}>{'BACK TO THE MAIN PAGE'}</StyledButton>
                 </Link>

@@ -5,7 +5,7 @@ const MAIN_COLOR = 'white';
 const SiteContent = styled.div`
     background-color: ${MAIN_COLOR};
     margin: 0 auto;
-    min-height: 100vh;
+    min-height: 150vh;
     position: relative;
 `;
 

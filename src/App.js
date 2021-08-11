@@ -9,6 +9,7 @@ import ManageProducts from "./pages/ManageProducts/ManageProducts";
 import PageNotFound from "./pages/PageNotFound/PageNotFound";
 
 const App = () => {
+
     return (
         <BrowserRouter>
             <Switch>

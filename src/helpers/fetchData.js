@@ -1,14 +1,20 @@
 export const MAIN_WEBSITE_URL = 'localhost:3000';
 export const WEBSITE_URL = 'localhost:3000';
-export const FETCH_URL = 'http://localhost:4200/api/dishes';
+export const DEFAULT_API_URL = 'http://localhost:4200/api/dishes';
+
+export const getApiUrl = () => {
+    return localStorage.getItem('server_api') ?? DEFAULT_API_URL;
+}
 
 export const fetchProducts = async () => {
-    const response = await fetch(FETCH_URL);
+    const fetchUrl = getApiUrl();
+    const response = await fetch(fetchUrl);
     return {status: response.status, response: await response.json()};
 };
 
 export const addProduct = (payload) => {
-    return fetch(FETCH_URL, {
+    const fetchUrl = getApiUrl();
+    return fetch(fetchUrl, {
         method: 'post',
         headers: {
             'Content-Type': 'application/json;charset=utf-8'
@@ -18,7 +24,8 @@ export const addProduct = (payload) => {
 };
 
 export const updateProduct = (id, payload) => {
-    return fetch(FETCH_URL + id, {
+    const fetchUrl = getApiUrl();
+    return fetch(fetchUrl + id, {
         method: 'put',
         headers: {
             'Content-Type': 'application/json;charset=utf-8'
@@ -28,5 +35,6 @@ export const updateProduct = (id, payload) => {
 };
 
 export const deleteProduct = (id) => {
-    return fetch(FETCH_URL + id, {method: 'delete'});
+    const fetchUrl = getApiUrl();
+    return fetch(fetchUrl + id, {method: 'delete'});
 };
