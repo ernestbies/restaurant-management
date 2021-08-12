@@ -13,9 +13,3 @@
     align-items: center;
     justify-content: center;
 }
-
-@media screen and (orientation:portrait) {
-    .footer {
-        position: inherit;
-    }
-}

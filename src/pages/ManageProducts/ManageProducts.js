@@ -15,7 +15,7 @@ const ManageProducts = () => {
             <Navbar/>
             <MenuContainer>
                 <Header/>
-                <Link to={'/'} style={{marginTop: 50}}>
+                <Link to={'/'} style={{marginTop: 50, marginBottom: 120}}>
                     <StyledButton fontSize={13}>{'BACK TO THE MAIN PAGE'}</StyledButton>
                 </Link>
                 <Logo/>

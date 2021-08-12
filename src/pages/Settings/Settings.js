@@ -50,7 +50,7 @@ const Settings = () => {
                 />
                 <StyledButton onClick={saveChanges} style={{marginTop: 50}} fontSize={13}>{'SAVE CHANGES'}</StyledButton>
                 <StyledButton onClick={reset} style={{marginTop: 25}} fontSize={13}>{'RESET TO DEFAULT API SERVER'}</StyledButton>
-                <Link to={'/'} style={{marginTop: 25}}>
+                <Link to={'/'} style={{marginTop: 25, marginBottom: 120}}>
                     <StyledButton fontSize={13}>{'BACK TO THE MAIN PAGE'}</StyledButton>
                 </Link>
                 <Logo/>

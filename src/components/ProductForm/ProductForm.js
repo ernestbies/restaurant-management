@@ -7,7 +7,7 @@ import {
     FoodImage,
     StyledForm,
     StyledRow,
-    FormSelect, StyledOption, FormButton, FormSubheader, ColoredStatus, StyledSpan
+    FormSelect, StyledOption, FormButton, FormSubheader, ColoredStatus, StyledSpan, ButtonsContainer
 } from "./ProductForm.styles";
 import {addProduct} from "../../helpers/fetchData";
 
@@ -208,8 +208,10 @@ const ProductForm = () => {
             }
             <FormSubheader>{'Fill in all the required fields and then press the `Add dish` button to add dish or the `Clear` button to reset the entered data.'}</FormSubheader>
             <FormSubheader>{'Current form status: '}<ColoredStatus color={status.color}>{status.text}</ColoredStatus></FormSubheader>
-            <FormButton onClick={() => clear('clear')} type={'button'} butType={'clear'}>{'- Clear data'}</FormButton>
-            <FormButton disabled={!validateForm()} onClick={() => add()} type={'button'} butType={'add'}>{'+ Add dish'}</FormButton>
+            <ButtonsContainer>
+                <FormButton onClick={() => clear('clear')} type={'button'} butType={'clear'}>{'- Clear data'}</FormButton>
+                <FormButton disabled={!validateForm()} onClick={() => add()} type={'button'} butType={'add'}>{'+ Add dish'}</FormButton>
+            </ButtonsContainer>
         </FormContent>
     </StyledForm>);
 };

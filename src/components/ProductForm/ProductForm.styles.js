@@ -1,10 +1,10 @@
 import styled, {keyframes} from 'styled-components';
 
 export const ProductFormWrapper = styled.div`
+    flex: 1; 
     display: flex;
     align-items: center;
-    justify-content: center;
-    flex: 1;    
+    justify-content: center;   
     margin-left: 10px;
     
     @media screen and (orientation:portrait) {
@@ -16,11 +16,13 @@ export const ProductFormWrapper = styled.div`
 
 export const StyledForm = styled.form`
     max-width: 480px;
-    height: 530px;  
+    min-height: 530px;  
     background-color: white;  
     margin: 0 auto;
     border: 1px solid black;  
     border-radius: 10px; 
+    margin-top: 30px;
+    margin-bottom: 100px;
     position: relative;
     
     @media (max-width: 480px) {
@@ -42,6 +44,7 @@ export const FormSubheader = styled.p`
     color: gray;
     font-family: Indie Flower, serif; 
     margin-top: 20px;
+    margin-right: 20px;
 `;
 
 export const ColoredStatus = styled.span`
@@ -108,19 +111,6 @@ export const FormSelect = styled.select`
 
 export const StyledOption = styled.option``;
 
-export const StyledText = styled.p`
-    user-select: none;
-    font-size: 15px;
-    letter-spacing: 2px;
-    color: dodgerblue;
-    font-family: Indie Flower, serif;
-    margin-right: 15px;
-    border-bottom: 2px solid dodgerblue;
-    position: absolute;
-    bottom: 20px;
-    left: 20px;  
-`;
-
 export const FormButton = styled.button`
     cursor: pointer;
     width: 100px;
@@ -132,8 +122,7 @@ export const FormButton = styled.button`
     background-color: ${({butType}) => butType === 'clear' ? 'red' : 'dodgerblue'};
     border: 0;
     border-radius: 25px;
-    position: absolute;
-    bottom: 30px;
+    margin: 5px;
     right: ${({butType}) => butType === 'clear' ? '130px' : '20px'}; 
     
     &:disabled {
@@ -148,4 +137,13 @@ export const StyledSpan = styled.span`
     font-family: Indie Flower, serif;
     margin-right: 15px;
     white-space: pre-wrap;
+`;
+
+export const ButtonsContainer = styled.div`
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    margin-top: 30px;
+    margin-right: 30px;
 `;

@@ -13,5 +13,4 @@ export const MenuContainer = styled.div`
     justify-content: center;
     flex-direction: column;
     margin-top: 30px;
-    margin-bottom: 30px;
 `;

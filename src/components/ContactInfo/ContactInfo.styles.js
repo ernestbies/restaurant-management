@@ -9,6 +9,7 @@ export const ContactInfoContainer = styled.div`
     margin-right: 10px;
     text-align: center;
     padding-top: 30px;
+    margin-bottom: 80px;
 `;
 
 export const StyledText = styled.p`
