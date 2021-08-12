@@ -22,7 +22,7 @@ const AddProductInfo = () => {
     }, []);
 
     const renderStatusList = () => {
-        return Object.keys(formStatusList).map(e =>
+        return Object.keys(formStatusList).filter(e => e.includes(type) || e === 'clear').map(e =>
             <InfoText key={e} style={{margin: 0}}>
                 <FormattedInfoText color={formStatusList[e].color} font={'Indie Flower'}>
                     {'> ' + formStatusList[e].text}

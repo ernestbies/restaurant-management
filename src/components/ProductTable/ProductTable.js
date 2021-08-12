@@ -1,12 +1,15 @@
 import React, {useState, useEffect} from "react";
 import {
-    StyledCaption, StyledFooterDiv, StyledFooterText,
+    StyledCaption,
+    StyledFooterDiv,
+    StyledFooterText,
     StyledTable,
     StyledTd,
     StyledTh,
     StyledTr,
     SubHeader,
-    TableBody, TableFooter,
+    TableBody,
+    TableFooter,
     TableHead
 } from "./ProductTable.styles";
 import {FormSelect, StyledOption} from "../ProductForm/ProductForm.styles";
