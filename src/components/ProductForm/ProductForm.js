@@ -9,19 +9,32 @@ import {
     StyledRow,
     FormSelect, StyledOption, FormButton, FormSubheader, ColoredStatus, StyledSpan, ButtonsContainer
 } from "./ProductForm.styles";
-import {addProduct} from "../../helpers/fetchData";
+import {addProduct, fetchProduct, updateProduct} from "../../helpers/fetchData";
+import {useLocation} from "react-router-dom";
 
 export const formStatusList = {
-    preparation: {
+    add_preparation: {
         text: 'Fill in the required fields and add the dish.',
         color: 'gray'
     },
-    success: {
+    edit_preparation: {
+        text: 'Fill in the required fields and edit the dish.',
+        color: 'gray'
+    },
+    add_success: {
         text: 'The dish has been added successfully.',
         color: 'green'
     },
-    error: {
+    edit_success: {
+        text: 'The dish has been edited successfully.',
+        color: 'green'
+    },
+    add_error: {
         text: 'There was an error adding the dish.',
+        color: 'red'
+    },
+    edit_error: {
+        text: 'There was an error editing the dish.',
         color: 'red'
     },
     clear: {
@@ -32,20 +45,62 @@ export const formStatusList = {
 
 const ProductForm = () => {
 
+    const [formType, setFormType] = useState('add');
     const [type, setType] = useState('pizza');
+    const [id, setId] = useState('');
     const [name, setName] = useState('');
     const [preparationTime, setPreparationTime] = useState('');
     const [noOfSlices, setNoOfSlices] = useState(1);
     const [diameter, setDiameter] = useState(1);
     const [spicinessScale, setSpicinessScale] = useState(1);
     const [slicesOfBread, setSlicesOfBread] = useState(1);
+    const [status, setStatus] = useState(formStatusList.add_preparation);
+    const location = useLocation();
 
-    const [status, setStatus] = useState(formStatusList.preparation);
     useEffect(() => {
-        setStatus(formStatusList.preparation);
-        clear();
+        if(location?.pathname.includes('edit')) {
+            setId(location.pathname.replace('/edit-dish/', ''));
+            setFormType('edit');
+            if(location?.state?.productInfo) {
+                fillProductInfo(location.state.productInfo);
+            } else {
+                fetchProduct(id).then(res => {
+                    if(res?.errorCode) {
+                        errorRedirect();
+                    } else {
+                        fillProductInfo(res);
+                    }
+                }).catch(() => errorRedirect());
+            }
+            setStatus(formStatusList.edit_preparation);
+        } else {
+            setFormType('add');
+            setStatus(formStatusList.add_preparation);
+            clear();
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+
+    useEffect(() => {
+        setStatus(formStatusList[formType + '_preparation']);
+        formType === 'edit' && clear();
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [type]);
+
+    const errorRedirect = () => {
+        window.location.pathname = '/';
+    };
+
+    const fillProductInfo = (productInfo) => {
+        setType(productInfo.type);
+        setId(productInfo.id);
+        setName(productInfo.name);
+        setPreparationTime(productInfo.preparation_time);
+        productInfo.number_of_slices && setNoOfSlices(productInfo.number_of_slices);
+        productInfo.diameter && setDiameter(productInfo.diameter);
+        productInfo.spiciness_scale && setSpicinessScale(productInfo.spiciness_scale);
+        productInfo.slices_of_bread && setSlicesOfBread(productInfo.slices_of_bread);
+    }
 
     const generateSpicinessScale = () => {
         let view = [];
@@ -56,14 +111,18 @@ const ProductForm = () => {
     }
 
     const clear = (statusType) => {
-        statusType === 'add' && setStatus(formStatusList.success);
+        statusType === 'add' && setStatus(formStatusList.add_success);
+        statusType === 'edit' && setStatus(formStatusList.edit_success);
         statusType === 'clear' && setStatus(formStatusList.clear);
-        setName('');
-        setPreparationTime('');
-        setNoOfSlices(1);
-        setDiameter(1);
-        setSpicinessScale(1);
-        setSlicesOfBread(1);
+
+        if(statusType !== 'edit') {
+            setName('');
+            setPreparationTime('');
+            setNoOfSlices(1);
+            setDiameter(1);
+            setSpicinessScale(1);
+            setSlicesOfBread(1);
+        }
     }
 
     const add = () => {
@@ -84,13 +143,20 @@ const ProductForm = () => {
                 console.error('Wrong type');
         }
 
-        addProduct(payload).then((res) => {
+        formType === 'add' ? addProduct(payload).then((res) => {
             if(res.status === 201) {
                 clear('add')
             } else {
-                setStatus(formStatusList.error);
+                setStatus(formStatusList.add_error);
             }
-        }).catch(() => setStatus(formStatusList.error));
+        }).catch(() => setStatus(formStatusList.add_error)) :
+            updateProduct(id, payload).then((res) => {
+                if(res.status === 200) {
+                    clear('edit')
+                } else {
+                    setStatus(formStatusList.edit_error);
+                }
+            }).catch(() => setStatus(formStatusList.edit_error));
     }
 
     const allowOnlyNumbers = (evt, floatNumbers = false) => {
@@ -145,7 +211,7 @@ const ProductForm = () => {
     }
 
     return (<StyledForm name={'add-dish'}>
-        <FormHeader>{'Dish add form'}</FormHeader><br/>
+        <FormHeader>{'Dish ' + formType + ' form'}</FormHeader><br/>
         <FoodImage src={'/' + type + '.png'} key={type}/>
         <FormContent>
             <StyledRow>
@@ -206,11 +272,11 @@ const ProductForm = () => {
                     </StyledRow>
                 </>
             }
-            <FormSubheader>{'Fill in all the required fields and then press the `Add dish` button to add dish or the `Clear` button to reset the entered data.'}</FormSubheader>
+            <FormSubheader>{`Fill in all the required fields and then press the ${formType} dish button to add dish or the clear button to reset the entered data.`}</FormSubheader>
             <FormSubheader>{'Current form status: '}<ColoredStatus color={status.color}>{status.text}</ColoredStatus></FormSubheader>
             <ButtonsContainer>
                 <FormButton onClick={() => clear('clear')} type={'button'} butType={'clear'}>{'- Clear data'}</FormButton>
-                <FormButton disabled={!validateForm()} onClick={() => add()} type={'button'} butType={'add'}>{'+ Add dish'}</FormButton>
+                <FormButton disabled={!validateForm()} onClick={() => add()} type={'button'} butType={'add'}>{formType === 'edit' ? 'Edit dish' : '+ Add dish'}</FormButton>
             </ButtonsContainer>
         </FormContent>
     </StyledForm>);

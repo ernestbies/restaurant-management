@@ -2,19 +2,14 @@ export const MAIN_WEBSITE_URL = 'localhost:3000';
 export const WEBSITE_URL = 'localhost:3000';
 export const DEFAULT_API_URL = 'http://localhost:4200/api/dishes';
 
-export const getApiUrl = () => {
-    return localStorage.getItem('server_api') ?? DEFAULT_API_URL;
-}
+export const getApiUrl = () => localStorage.getItem('server_api') ?? DEFAULT_API_URL;
 
-export const fetchProducts = async () => {
-    const fetchUrl = getApiUrl();
-    const response = await fetch(fetchUrl);
-    return {status: response.status, response: await response.json()};
-};
+export const fetchProduct = async (id) => await fetch(getApiUrl() + '/' + id).then(res => res.json());
+
+export const fetchProducts = async () => await fetch(getApiUrl()).then(res => res.json());
 
 export const addProduct = (payload) => {
-    const fetchUrl = getApiUrl();
-    return fetch(fetchUrl, {
+    return fetch(getApiUrl(), {
         method: 'post',
         headers: {
             'Content-Type': 'application/json;charset=utf-8'
@@ -24,8 +19,7 @@ export const addProduct = (payload) => {
 };
 
 export const updateProduct = (id, payload) => {
-    const fetchUrl = getApiUrl();
-    return fetch(fetchUrl + id, {
+    return fetch(getApiUrl() + '/' + id, {
         method: 'put',
         headers: {
             'Content-Type': 'application/json;charset=utf-8'
@@ -34,7 +28,4 @@ export const updateProduct = (id, payload) => {
     });
 };
 
-export const deleteProduct = (id) => {
-    const fetchUrl = getApiUrl();
-    return fetch(fetchUrl + id, {method: 'delete'});
-};
+export const deleteProduct = (id) => fetch(getApiUrl() + '/' + id, {method: 'delete'});

@@ -3,13 +3,25 @@ import dishValidation from "../utils/dishValidationSchema";
 import convert from "../services/mongoConverter";
 
 const dishController = {
+    getDish: async (req, res) => {
+        try {
+            const dish = await Dish.findById(req.params.id);
+            if(dish) {
+                res.status(200).send(convert(dish));
+            } else {
+                res.status(404).send({errorCode: 404, errorMessage: 'Dish not found'});
+            }
+        } catch (error) {
+            res.status(500).send(error);
+        }
+    },
     getAllDishes: async (req, res) => {
         try {
             const dishes = await Dish.find();
 
             res.status(200).send(convert(dishes));
         } catch (error) {
-            res.status(500).send(error)
+            res.status(500).send(error);
         }
     },
     createDish: async (req, res) => {

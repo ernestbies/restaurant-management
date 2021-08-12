@@ -8,6 +8,7 @@ import SiteContent from "../../components/SiteContent/SiteContent";
 import {Link} from "react-router-dom";
 import {StyledButton} from "../../components/StyledButton/StyledButton";
 import {Logo} from "../../components/Logo/Logo";
+import ProductTable from "../../components/ProductTable/ProductTable";
 
 const ManageProducts = () => {
     return (
@@ -15,6 +16,7 @@ const ManageProducts = () => {
             <Navbar/>
             <MenuContainer>
                 <Header/>
+                <ProductTable/>
                 <Link to={'/'} style={{marginTop: 50, marginBottom: 120}}>
                     <StyledButton fontSize={13}>{'BACK TO THE MAIN PAGE'}</StyledButton>
                 </Link>

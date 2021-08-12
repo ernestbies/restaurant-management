@@ -16,6 +16,7 @@ const App = () => {
                 <Route exact path={'/'} component={Main}/>
                 <Route exact path={'/products'} component={ManageProducts}/>
                 <Route exact path={'/add-dish'} component={AddProduct}/>
+                <Route exact path={'/edit-dish/:id'} component={AddProduct}/>
                 <Route exact path={'/faq'} component={Faq}/>
                 <Route exact path={'/settings'} component={Settings}/>
                 <Route exact path={'/page-not-found'} component={PageNotFound}/>

@@ -26,6 +26,13 @@ export const InfoTitle = styled.p`
     font-size: 28px;
 `;
 
+export const InfoSubtitle = styled.p`
+    color: gray;
+    font-family: Indie Flower, serif;
+    font-size: 20px;
+    margin-top: 0;
+`;
+
 export const InfoText = styled.p`
     color: black;
     font-family: Roboto Condensed, serif;
