@@ -21,6 +21,7 @@ import {
 import {faqQuestionsAnswers} from "./faqQuestionsAnswers";
 import {ColoredSpan} from "../../components/Alert/Alert.styles";
 import JsonSchema from "../../components/JsonSchema/JsonSchema";
+import HttpQueryContainer from "../../components/HttpQueryContainer/HttpQueryContainer";
 
 const Faq = () => {
 
@@ -37,6 +38,7 @@ const Faq = () => {
                     </FaqRow>
                 </StyledRow>
                 {e.id === 3 && <JsonSchema/>}
+                {e.id === 4 && <HttpQueryContainer/>}
             </FaqItem>
         );
     };

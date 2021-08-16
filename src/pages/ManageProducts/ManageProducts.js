@@ -17,7 +17,10 @@ const ManageProducts = () => {
             <MenuContainer>
                 <Header/>
                 <ProductTable/>
-                <Link to={'/'} style={{marginTop: 50, marginBottom: 120}}>
+                <Link to={'/add-dish'} style={{marginTop: 5}}>
+                    <StyledButton fontSize={13}>{'ADD NEW PRODUCT'}</StyledButton>
+                </Link>
+                <Link to={'/'} style={{marginTop: 25, marginBottom: 140}}>
                     <StyledButton fontSize={13}>{'BACK TO THE MAIN PAGE'}</StyledButton>
                 </Link>
                 <Logo/>

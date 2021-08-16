@@ -16,11 +16,11 @@ const Subheader = ({type}) => {
     return (
         <StyledSubheaderWrapper>
             <StyledSubheader>{type === 'not_found' && <FormattedText>{'404 Page Not Found: '}</FormattedText>}{subheaders[type]}</StyledSubheader>
-            {type === 'settings' && <StyledSubheader style={{margin: 0}}>
+            {type === 'settings' && <StyledSubheader style={{marginTop: 0, marginBottom: 0}}>
                 {'The server providing information about the dishes should accept the data in JSON format as specified in the '}
                 <Link to={'/faq'} style={{textDecoration: 'none'}}><FormattedInfoText>{'FAQ'}</FormattedInfoText></Link>{'.'}
             </StyledSubheader>}
-            {type === 'not_found' && <StyledSubheader style={{margin: 0}}>
+            {type === 'not_found' && <StyledSubheader style={{marginTop: 0, marginBottom: 0}}>
                 {'In order to learn about the application\'s operation, please visit the '}
                 <Link to={'/faq'} style={{textDecoration: 'none'}}><FormattedInfoText>{'FAQ'}</FormattedInfoText></Link>{'.'}
             </StyledSubheader>}

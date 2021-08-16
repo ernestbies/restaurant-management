@@ -1,0 +1,14 @@
+.icon {
+    margin-left: 10px;
+    margin-right: 10px;
+    cursor: pointer;
+    transition: all 2s ease-in-out;
+}
+
+.icon[type = 'edit']:hover {
+    color: deepskyblue;
+}
+
+.icon[type = 'delete']:hover {
+    color: red;
+}

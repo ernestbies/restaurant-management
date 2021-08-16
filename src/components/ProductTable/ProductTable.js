@@ -17,18 +17,22 @@ import {faPencilAlt, faTrashAlt} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {deleteProduct, fetchProducts} from "../../helpers/fetchData";
 import {Link} from "react-router-dom";
+import SearchBar from "../SearchBar/SearchBar";
+import './ProductTable.css';
 
 const ProductTable = () => {
 
     const [products, setProducts] = useState([]);
     const [type, setType] = useState('all');
     const [deletedIds, setDeletedIds] = useState([]);
+    const [search, setSearch] = useState('');
 
     useEffect(() => {
         fetchProducts().then((res) => setProducts(res));
     }, []);
 
     const filterProducts = () => products
+        .filter(e => e.name.includes(search))
         .filter(e => deletedIds.indexOf(e.id) === -1)
         .filter(e => type === 'all' ? e : (e.type === type));
 
@@ -59,62 +63,66 @@ const ProductTable = () => {
                         }
                     }}
                           style={{color: 'black'}}>
-                        <FontAwesomeIcon style={{marginLeft: 10, marginRight: 10, cursor: 'pointer'}}
+                        <FontAwesomeIcon className={'icon'} type={'edit'}
                                          icon={faPencilAlt}/>
                     </Link>
-                    <FontAwesomeIcon onClick={() => deleteItem(e.id)}
-                        style={{marginLeft: 10, marginRight: 10, cursor: 'pointer'}} icon={faTrashAlt}/>
+                    <FontAwesomeIcon onClick={() => deleteItem(e.id)} className={'icon'}
+                                     icon={faTrashAlt} type={'delete'}/>
                 </StyledTd>
             </StyledTr>)
     };
 
     const deleteItem = (id) => {
         deleteProduct(id).then((res) => {
-            if(res.status === 204) {
+            if (res.status === 204) {
                 setDeletedIds(prevState => [...prevState, id]);
             }
         });
     };
 
-    return (<StyledTable>
-        <StyledCaption>{'List of dishes in database'}</StyledCaption>
-        <TableHead>
-            <StyledTr>
-                <StyledTh>{'Dish identifier (ID)'}<SubHeader>{'\n{mongo_id}'}</SubHeader></StyledTh>
-                <StyledTh style={{width: '20%'}}>{'Dish name'}<SubHeader>{'\n{string}'}</SubHeader></StyledTh>
-                <StyledTh>{'Preparation time'}<SubHeader>{'\n{format: HH:mm:ss}'}</SubHeader></StyledTh>
-                <StyledTh>{'Number of slices'}<SubHeader>{'\n{integer}'}</SubHeader></StyledTh>
-                <StyledTh>{'Diameter'}<SubHeader>{'\n{float}'}</SubHeader></StyledTh>
-                <StyledTh>{'Spiciness scale'}<SubHeader>{'\n{range: 1 - 10}'}</SubHeader></StyledTh>
-                <StyledTh>{'Slices of bread'}<SubHeader>{'\n{integer}'}</SubHeader></StyledTh>
-                <StyledTh style={{width: '10%'}}>{'Type'}
-                    <FormSelect onChange={(event) => setType(event.target.value)}
-                                style={{margin: 0}} fontFamily={'Roboto Condensed'}
-                    >
-                        <StyledOption value={'all'}>{'All'}</StyledOption>
-                        <StyledOption value={'pizza'}>{'Pizza'}</StyledOption>
-                        <StyledOption value={'soup'}>{'Soup'}</StyledOption>
-                        <StyledOption value={'sandwich'}>{'Sandwich'}</StyledOption>
-                    </FormSelect>
-                </StyledTh>
-            </StyledTr>
-        </TableHead>
-        <TableBody>
-            {
-                renderCells()
-            }
-        </TableBody>
-        <TableFooter>
-            <StyledTr>
-                <StyledTd>
-                    <StyledFooterDiv>{'Number of items: '}<StyledFooterText>{filterProducts().length}</StyledFooterText></StyledFooterDiv>
-                </StyledTd>
-                <StyledTd>
-                    <StyledFooterDiv>{'Selected dish type: '}<StyledFooterText>{type}</StyledFooterText></StyledFooterDiv>
-                </StyledTd>
-            </StyledTr>
-        </TableFooter>
-    </StyledTable>);
+    return (
+        <>
+            <SearchBar text={search} onChange={(e) => setSearch(e.target.value)}/>
+            <StyledTable>
+                <StyledCaption>{'List of dishes in database'}</StyledCaption>
+                <TableHead>
+                    <StyledTr>
+                        <StyledTh>{'Dish identifier (ID)'}<SubHeader>{'\n{mongo_id}'}</SubHeader></StyledTh>
+                        <StyledTh style={{width: '20%'}}>{'Dish name'}<SubHeader>{'\n{string}'}</SubHeader></StyledTh>
+                        <StyledTh>{'Preparation time'}<SubHeader>{'\n{format: HH:mm:ss}'}</SubHeader></StyledTh>
+                        <StyledTh>{'Number of slices'}<SubHeader>{'\n{integer}'}</SubHeader></StyledTh>
+                        <StyledTh>{'Diameter'}<SubHeader>{'\n{float}'}</SubHeader></StyledTh>
+                        <StyledTh>{'Spiciness scale'}<SubHeader>{'\n{range: 1 - 10}'}</SubHeader></StyledTh>
+                        <StyledTh>{'Slices of bread'}<SubHeader>{'\n{integer}'}</SubHeader></StyledTh>
+                        <StyledTh style={{width: '10%'}}>{'Type'}
+                            <FormSelect onChange={(event) => setType(event.target.value)}
+                                        style={{margin: 0}} fontFamily={'Roboto Condensed'}
+                            >
+                                <StyledOption value={'all'}>{'All'}</StyledOption>
+                                <StyledOption value={'pizza'}>{'Pizza'}</StyledOption>
+                                <StyledOption value={'soup'}>{'Soup'}</StyledOption>
+                                <StyledOption value={'sandwich'}>{'Sandwich'}</StyledOption>
+                            </FormSelect>
+                        </StyledTh>
+                    </StyledTr>
+                </TableHead>
+                <TableBody>
+                    {
+                        renderCells()
+                    }
+                </TableBody>
+                <TableFooter>
+                    <StyledTr>
+                        <StyledTd>
+                            <StyledFooterDiv>{'Number of items: '}<StyledFooterText>{filterProducts().length}</StyledFooterText></StyledFooterDiv>
+                        </StyledTd>
+                        <StyledTd>
+                            <StyledFooterDiv>{'Selected dish type: '}<StyledFooterText>{type}</StyledFooterText></StyledFooterDiv>
+                        </StyledTd>
+                    </StyledTr>
+                </TableFooter>
+            </StyledTable>
+        </>);
 };
 
 export default ProductTable;

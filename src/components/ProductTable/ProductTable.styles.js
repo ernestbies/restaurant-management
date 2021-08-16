@@ -5,12 +5,31 @@ export const StyledTable = styled.table`
     width: 1000px;
     border: 1px solid black;     
     background-color: white;
-    margin: 0 auto;
     margin-bottom: 30px;
     border-collapse: collapse;
     font-family: Roboto Condensed, serif;   
     font-weight: 300;
     font-size: 15px;
+    
+    @media (max-width: 1100px) {
+        scale: 0.9;
+    }
+    
+    @media (max-width: 920px) {
+        scale: 0.7;
+    }
+    
+    @media (max-width: 750px) {
+        scale: 0.4;
+    }
+    
+    @media (max-width: 400px) {
+        scale: 0.35;
+    }
+    
+    @media (max-width: 350px) {
+        scale: 0.25;
+    }
 `;
 
 export const TableBody = styled.tbody``;

@@ -13,5 +13,10 @@ export const faqQuestionsAnswers = [
         id: 3,
         question: 'What is the correct JSON format supported by the system?',
         answer: 'The format supported by the Restaurant Management System (RMS) looks as shown. All fields are required depending on the type provided. The schema shows sample data with the data type.'
+    },
+    {
+        id: 4,
+        question: 'What HTTP queries does the system support?',
+        answer: 'The HTTP queries handled by the Restaurant Management System (RMS) look as shown. '
     }
 ];
