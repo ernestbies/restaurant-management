@@ -26,9 +26,9 @@ import HttpQueryContainer from "../../components/HttpQueryContainer/HttpQueryCon
 const Faq = () => {
 
     const renderFaq = () => {
-        return faqQuestionsAnswers.map(e =>
-            <FaqItem>
-                <StyledRow key={e.id}>
+        return faqQuestionsAnswers.map((e, index) =>
+            <FaqItem key={e.id + index}>
+                <StyledRow>
                     <QuestionIdWrapper>
                         <QuestionId>{e.id + '. '}</QuestionId>
                     </QuestionIdWrapper>
