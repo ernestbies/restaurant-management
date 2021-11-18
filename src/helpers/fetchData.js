@@ -1,5 +1,5 @@
-export const MAIN_WEBSITE_URL = 'localhost:3000';
-export const WEBSITE_URL = 'localhost:3000';
+export const MAIN_WEBSITE_URL = 'https://ernestbies.netlify.app';
+export const WEBSITE_URL = 'https://rms-ernestbies.netlify.app';
 export const DEFAULT_API_URL = 'http://localhost:4200/api/dishes';
 
 export const getApiUrl = () => localStorage.getItem('server_api') ?? DEFAULT_API_URL;
