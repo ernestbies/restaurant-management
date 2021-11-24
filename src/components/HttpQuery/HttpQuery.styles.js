@@ -9,7 +9,8 @@ const queryColors = {
 
 export const HttpQueryBox = styled.div`
     height: 30px;
-    width: 500px;
+    max-width: 500px;
+    width: 95%;
     background-color: ${({type}) => queryColors[type] + '30'};
     align-self: center;
     border-radius: 5px;

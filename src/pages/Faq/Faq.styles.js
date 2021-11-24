@@ -6,10 +6,13 @@ export const FaqTitle = styled.p`
     font-weight: bold;
     font-size: 15px;
     letter-spacing: 1px;
+    width: 100%;
+    text-align: center;
 `;
 
 export const FaqContainer = styled.div`
     max-width: 950px;
+    width: 100%;
 `;
 
 export const FaqRow = styled.div``;

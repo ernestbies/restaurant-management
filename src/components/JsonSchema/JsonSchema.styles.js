@@ -2,7 +2,8 @@ import styled from 'styled-components';
 
 export const StyledJson = styled.div`
     background-color: white;
-    width: 400px;
+    max-width: 400px;
+    width: 90%;
     margin-top: 15px;
     margin-bottom: 15px;
     align-self: center;

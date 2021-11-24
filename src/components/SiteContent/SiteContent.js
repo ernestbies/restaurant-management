@@ -6,6 +6,7 @@ const SiteContent = styled.div`
     background-color: ${MAIN_COLOR};
     margin: 0 auto;
     min-height: 100vh;
+    width: 100%;
     position: relative;
 `;
 
