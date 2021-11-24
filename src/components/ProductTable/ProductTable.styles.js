@@ -1,7 +1,6 @@
 import styled, {css} from 'styled-components';
 
 export const StyledTable = styled.table`
-    height: 400px;
     width: 1000px;
     border: 1px solid black;     
     background-color: white;
@@ -11,40 +10,43 @@ export const StyledTable = styled.table`
     font-weight: 300;
     font-size: 15px;
     
-    @media (max-width: 1100px) {
-        scale: 0.9;
+    @media (max-width: 1000px) {
+        transform: scale(0.7);
     }
     
-    @media (max-width: 920px) {
-        scale: 0.7;
-    }
-    
-    @media (max-width: 750px) {
-        scale: 0.4;
-    }
-    
-    @media (max-width: 400px) {
-        scale: 0.35;
-    }
-    
-    @media (max-width: 350px) {
-        scale: 0.25;
+    @media (max-width: 720px) {
+        transform: scale(1);
+        display: block;
+        margin-top: 50px;
     }
 `;
 
-export const TableBody = styled.tbody``;
+export const TableBody = styled.tbody`
+    @media (max-width: 720px) {
+        display: block;
+    }
+`;
 
-export const TableFooter = styled.tfoot``;
-
-export const TableHead = styled.thead`
-    background-color: #96d7ff;
+export const TableFooter = styled.tfoot`
+    @media (max-width: 720px) {
+        display: block;
+    }
 `;
 
 export const StyledTr = styled.tr`
     border: 1px solid black;
     
-    &:nth-child(even) {
-        background-color: #dddddd;
+    @media (max-width: 720px) {
+    
+        &:nth-child(odd) {
+            background-color: #e8e8e8;
+        }
+    
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        width: 100%;
     }
 `;
 
@@ -52,6 +54,10 @@ export const StyledTh = styled.th`
     border: 1px solid black;
     color: black;
     height: 60px;
+    
+    @media (max-width: 720px) {
+        display: block;
+    }
 `;
 
 export const StyledTd = styled.td`
@@ -65,6 +71,30 @@ export const StyledTd = styled.td`
         vertical-align: middle;
         text-align: center;
     `};
+    
+    @media (max-width: 720px) {
+        user-select: none;
+        max-width: 500px;
+        width: 100%;
+        display: block;
+        border: none;
+        border-bottom: 1px solid white; 
+        position: relative;
+        text-align: right;
+    }
+    
+    @media (max-width: 528px) {
+        max-width: 300px;
+        width: 100%;
+    }
+`;
+
+export const TableHead = styled.thead`
+    background-color: #96d7ff;
+    
+    @media (max-width: 720px) {
+        display: none;
+    }
 `;
 
 export const StyledCaption = styled.caption`
@@ -72,6 +102,10 @@ export const StyledCaption = styled.caption`
     padding: 20px;
     font-family: Roboto Condensed, serif;   
     font-size: 15px;
+    
+    @media (max-width: 720px) {
+        display: none;
+    }
 `;
 
 export const SubHeader = styled.span`
