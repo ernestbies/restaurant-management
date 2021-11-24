@@ -24,6 +24,7 @@ export const StyledForm = styled.form`
     margin-top: 30px;
     margin-bottom: 100px;
     position: relative;
+    width: 95%;
     
     @media (max-width: 480px) {
         scale: 0.95;
